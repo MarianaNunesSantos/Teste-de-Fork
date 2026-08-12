@@ -1,4 +1,5 @@
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 
 public class CodificadorM implements Codificador{
@@ -20,13 +21,15 @@ public class CodificadorM implements Codificador{
 
     // Recebe um string e retorna o correspondente codificado
     public String codifica(String str){
-        String codificada = (new BigInteger(str.toString())).toString(36);
-        return codificada;
+        byte[] bytes = str.getBytes(StandardCharsets.UTF_8);
+        BigInteger num = new BigInteger(1, bytes);
+        return num.toString(36);
     }
 
     // Recebe um string codificado e retorna o correspondente decodificado
     public String decodifica(String str){
-        String decodificada = (new BigInteger(str,36)).toString();
-        return decodificada;
+        BigInteger num = new BigInteger(str, 36);
+        byte[] bytes = num.toByteArray();
+        return new String(bytes, StandardCharsets.UTF_8);
     }
 }

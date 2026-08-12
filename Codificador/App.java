@@ -6,7 +6,7 @@ public class App {
         System.out.println("Versao: "+cod.getDataCriacao());
         System.out.println("Nivel de segurança: "+cod.getNivelSeguranca());
 
-        String texto = "Este e o string a ser codificado";
+        String texto = "Esteeostringasercodificado";
         String codificado = cod.codifica(texto);
         String decodificado = cod.decodifica(codificado);
 
